@@ -7,6 +7,7 @@
 
 #include "BINPointReader.hpp"
 #include "stuff.h"
+#include <cstring>
 
 namespace fs = std::experimental::filesystem;
 
@@ -179,7 +180,7 @@ bool BINPointReader::readNextPoint(){
 			} else {
 				vector<uint8_t> target(attribute.byteSize, 0);
 
-				memcpy(target.data(), (buffer + offset), attribute.byteSize);
+				std:memcpy(target.data(), (buffer + offset), attribute.byteSize);
 				
 				point.extraBytes.insert(point.extraBytes.end(), target.begin(), target.end());
 			}
